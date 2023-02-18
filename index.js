@@ -6,8 +6,27 @@ app.use(express.json());
 
 let users = [];
 
+// app.get('/', (req, res) => {
+//   res.send('Express.js');
+// });
+
+let data = { id: 1, message: 'Hello, World!' };
+
+// GETリクエスト
 app.get('/', (req, res) => {
-  res.send('Express.js');
+  res.json(data);
+});
+
+// POSTリクエスト
+app.post('/', (req, res) => {
+  data = req.body;
+  res.json(data);
+});
+
+// PATCHリクエスト
+app.patch('/', (req, res) => {
+  data.message = req.body.message;
+  res.json(data);
 });
 
 app.post('/users', (req, res) => {
